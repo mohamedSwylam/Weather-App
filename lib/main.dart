@@ -6,6 +6,7 @@ import 'package:weather_app/shared/bloc_observer.dart';
 import 'layout/app_layout.dart';
 import 'layout/cubit/cubit.dart';
 import 'layout/cubit/states.dart';
+import 'models/weather_model.dart';
 
 
 void main() async {
@@ -27,10 +28,13 @@ class MyApp extends StatelessWidget
       child: BlocConsumer<AppCubit,AppStates>(
         listener: (context, state) {},
         builder: (context, state) {
+          WeatherModel? weather = AppCubit.get(context).weatherData;
           return MaterialApp(
             title: 'Weather App',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(),
+            theme: ThemeData(
+              primarySwatch:  AppCubit.get(context).getThemeColor(),
+            ),
             home: AppLayout(),
           );
         },
