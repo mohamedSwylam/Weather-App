@@ -59,7 +59,21 @@ class AppCubit extends Cubit<AppStates> {
       return 'https://icons8.com/icons/set/cloud';
     }
   }
-
+  MaterialColor? getThemeColor() {
+    if (weatherData!.weather_state_name =='Clear' || weatherData!.weather_state_name =='Light Cloud'){
+    return Colors.orange;
+    } else if (weatherData!.weather_state_name == 'Sleet' ||
+        weatherData!.weather_state_name == 'Snow' ||
+        weatherData!.weather_state_name== 'Hail') {
+  return Colors.blue;
+  } else if (weatherData!.weather_state_name == 'Heavy Cloud') {
+  return Colors.blueGrey;
+    }
+else if (weatherData!.weather_state_name == 'Light Rain' ||
+        weatherData!.weather_state_name =='Heavy Rain' || weatherData!.weather_state_name == 'Light Rain'){
+  return Colors.cyan;
+}
+  }
 }
 
 
